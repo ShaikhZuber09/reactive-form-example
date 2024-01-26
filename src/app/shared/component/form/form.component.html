@@ -1,0 +1,94 @@
+
+
+<h3>
+    {{(isEdit)? "Update Employee": "Add Employee"}}
+</h3>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="fname">First Name <span class="text-danger">*</span></label>
+        <input formControlName="firstName" class="form-control" type="text" name="fname" title="fname">
+        <ng-container *ngIf="f['firstName']?.invalid && f['firstName']?.touched">
+            <span class="text-danger" *ngIf="f['firstName']?.hasError('required')">First Name is required</span>
+          </ng-container>
+        
+    </div>
+    <div class="form-group">
+        <label for="fname">Last Name <span class="text-danger">*</span></label>
+        <input required formControlName="lastName" class="form-control" type="text" name="fname" title="fname">
+        <ng-container *ngIf="f['lastName']?.invalid && f['lastName']?.touched">
+            <span class="text-danger" *ngIf="f['lastName']?.hasError('required')">Last Name is required</span>
+          </ng-container>
+    </div>
+    <div class="form-group">
+        <label for="fname">Email <span class="text-danger">*</span></label>
+        <input formControlName="email" class="form-control" type="email" name="fname" title="fname">
+        <ng-container *ngIf="f['email']?.invalid && f['email']?.touched" class="text-danger">
+            <span class="text-danger" *ngIf="f['email']?.hasError('required')">Email is required</span>
+            <span class="text-danger" *ngIf="f['email']?.dirty && f['email']?.hasError('email')">Email is Invalid</span>
+
+        </ng-container>
+    </div>
+    <div class="form-group">
+        <label for="fname">Phone <span class="text-danger">*</span></label>
+        <input formControlName="phone" class="form-control" type="tel" name="fname" title="fname">
+        <ng-container *ngIf="f['phone']?.invalid && f['phone']?.touched">
+            <span class="text-danger" *ngIf="f['phone']?.hasError('required')">Phone Number is required</span>
+        </ng-container>
+    </div>
+    <div class="form-group">
+        <label for="fname">Company <span class="text-danger">*</span></label>
+        <input formControlName="company" class="form-control" type="text" name="fname" title="fname">
+        <ng-container *ngIf="f['company']?.invalid && f['company']?.touched">
+            <span class="text-danger" *ngIf="f['company']?.hasError('required')">Company Name is required</span>
+        </ng-container>
+    </div>
+    <div class="form-group">
+        <label for="fname">Gender <span class="text-danger">*</span></label>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="gender" id="male" value="male" formControlName="gender">
+            <label class="form-check-label" for="male">
+                Male
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="gender" id="female" value="female" formControlName="gender">
+            <label class="form-check-label" for="female">
+                Female
+            </label>
+        </div>
+        <ng-container *ngIf="f['gender']?.invalid && f['gender']?.touched">
+            <span class="text-danger" *ngIf="f['gender']?.hasError('required')">Gender is required</span>
+        </ng-container>
+    </div>
+
+    <div class="form-group">
+        <label for="fname">Date Of Birth<span class="text-danger">*</span></label>
+        <input class="form-control" type="date" name="fname" title="fname" formControlName="dob">
+        <ng-container *ngIf="f['dob']?.invalid && f['dob']?.touched">
+            <span class="text-danger" *ngIf="f['dob']?.hasError('required')">DOB is required</span>
+        </ng-container>
+    </div>
+    <div class="form-group">
+        <label for="fname">Password <span class="text-danger">*</span></label>
+        <input class="form-control" type="password" name="fname" title="fname" formControlName="password">
+        <ng-container *ngIf="f['password']?.invalid && f['password']?.touched">
+            <span class="text-danger" *ngIf="f['password']?.hasError('required')">Password is required</span>
+        </ng-container>
+    </div>
+    <div class="form-group">
+        <label for="fname">Confirm Password <span class="text-danger">*</span></label>
+        <input class="form-control" type="password" name="fname" title="fname" formControlName="cnfmPswd">
+        <ng-container *ngIf="f['cnfmPswd']?.invalid && f['cnfmPswd']?.touched">
+            <span class="text-danger" *ngIf="f['cnfmPswd']?.hasError('required')">Confirm Password is required</span>
+        </ng-container>
+        <ng-container *ngIf="f['cnfmPswd'].dirty">
+            <span class="text-danger" *ngIf="f['cnfmPswd'].value !== f['password'].value">
+              Password and Confirm password should be same !!!
+            </span>
+           
+          </ng-container>
+    </div>
+    <button class="btn btn-primary" type="submit" [disabled]="registerForm.invalid" >{{(isEdit)?"Update":'Submit'}}</button>
+    <button type="button" class="btn btn-danger ml-2" (click)="onCancel()">Cancel</button>
+
+</form>

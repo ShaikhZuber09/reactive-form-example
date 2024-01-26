@@ -1,0 +1,28 @@
+<div class="table-responsive mt-3 mt-md-0" *ngIf="(empList.length > 0); else nodata">
+
+  <table class="table table-borderless" >
+    <thead>
+      <tr>
+        <th class="bg-primary text-white" scope="col" *ngFor="let title of thead">{{title}}</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="text-uppercase" *ngFor="let emp of empList; index as i">
+        <td>{{emp.firstName}}</td>
+        <td>{{emp.lastName}}</td>
+        <td>{{emp.email}}</td>
+        <td>{{emp.phone}}</td>
+        <td>{{emp.company}}</td>
+        <td>{{emp.dob}}</td>
+        <td><button class="btn btn-success" (click)="onEdit(emp)">Edit</button></td>
+        <td><button class="btn btn-danger" (click)="onDelete(emp.id!,i)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+ 
+</div>
+<ng-template #nodata><p class="alert alert-info">
+  No employees added yet !!
+</p></ng-template>

@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/zuber_portfolio_2'),
+      dir: require('path').join(__dirname, './coverage/rective-form-example'),
       subdir: '.',
       reporters: [
         { type: 'html' },
