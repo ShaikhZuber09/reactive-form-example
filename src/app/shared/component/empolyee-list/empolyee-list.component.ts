@@ -39,8 +39,11 @@ onEdit(emp: Iemployee){
  this._ser.edit$.next(emp)
 }
 onDelete(id:string,i :number){
-  this._ser.onDelete(id)
-  this.empList.splice(i,1)
+  let confrm=  confirm('Are You Sure??');
+  if(confrm){
+    this._ser.onDelete(id)
+    this.empList.splice(i,1)
+  }
 }
 
 ngOnDestroy(): void {
